@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nodo8 · ESG Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g:    #1a5c38;
+    --gm:   #2d7d4e;
+    --gl:   #e8f5ee;
+    --gll:  #f3faf6;
+    --am:   #92600a;
+    --al:   #fef9ec;
+    --bl:   #1a3a5c;
+    --bll:  #ebf2ff;
+    --cy:   #0e5c6b;
+    --cyl:  #e8f7fa;
+    --pk:   #7c2d6e;
+    --pkl:  #fcf0fa;
+    --sl:   #1e2a3b;
+    --mid:  #4a5568;
+    --lt:   #f7f9f7;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--lt);
+    color: var(--sl);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--g);
+    padding: 28px 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .brand-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 300;
+  }
+  .product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-top: 20px;
+    line-height: 1.2;
+  }
+  .product-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .standards-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { padding: 24px 20px; }
+  .section + .section { border-top: 1px solid #e2ece6; }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--g);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gm), transparent);
+    border-radius: 2px;
+  }
+
+  .body-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  /* ── PILLS ── */
+  .pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .pill {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .pill-g  { background: var(--gl);  color: var(--g);  }
+  .pill-b  { background: var(--bll); color: var(--bl); }
+  .pill-am { background: var(--al);  color: var(--am); }
+  .pill-cy { background: var(--cyl); color: var(--cy); }
+
+  /* ── FLOW ── */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .flow-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+  .flow-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .flow-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sl);
+    margin-bottom: 4px;
+  }
+  .flow-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── AGENTS ── */
+  .agent-list { display: flex; flex-direction: column; gap: 10px; }
+  .agent-card {
+    padding: 14px 16px;
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .agent-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .agent-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .agent-role {
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 1px;
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+  .agent-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── PILLARS ── */
+  .pillar-list { display: flex; flex-direction: column; gap: 10px; }
+  .pillar-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .pillar-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .pillar-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ── DIFF GRID ── */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .diff-card {
+    padding: 14px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #ddeee4;
+  }
+  .diff-icon { font-size: 18px; margin-bottom: 6px; }
+  .diff-title { font-size: 13px; font-weight: 600; color: var(--sl); margin-bottom: 4px; }
+  .diff-desc  { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+  /* ── SECTION HEADER (dark band) ── */
+  .band {
+    background: var(--g);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .band-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--g);
+    padding: 20px;
+    text-align: center;
+  }
+  .footer-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .footer-email {
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .anim { animation: fadeUp 0.5s ease both; }
+  .anim-1 { animation-delay: 0.05s; }
+  .anim-2 { animation-delay: 0.12s; }
+  .anim-3 { animation-delay: 0.18s; }
+  .anim-4 { animation-delay: 0.24s; }
+  .anim-5 { animation-delay: 0.30s; }
+  .anim-6 { animation-delay: 0.36s; }
+  .anim-7 { animation-delay: 0.42s; }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header anim anim-1">
+    <div class="brand">NODO8</div>
+    <div class="brand-sub">Automatización · Inteligencia Artificial</div>
+    <div class="product-name">ESG Intelligence Platform</div>
+    <div class="product-sub">Sistema de automatización de reportes ESG con agentes IA especializados</div>
+    <div class="standards-row">
+      <span class="badge">GRI</span>
+      <span class="badge">CSRD</span>
+      <span class="badge">GHG Protocol</span>
+      <span class="badge">Human-in-the-loop</span>
+      <span class="badge">Trazabilidad total</span>
+    </div>
+  </div>
+
+  <!-- QUÉ ES -->
+  <div class="section anim anim-2">
+    <div class="section-title">¿Qué es?</div>
+    <p class="body-text">Una plataforma de agentes de IA que automatiza el ciclo completo de consultoría ESG: desde la ingesta de datos empresariales hasta la generación de reportes ejecutivos auditables, alineados con estándares internacionales.</p>
+    <p class="body-text">Cada etapa requiere validación humana antes de avanzar, garantizando precisión, trazabilidad y responsabilidad en cada eslabón del proceso.</p>
+    <div class="pills">
+      <div class="pill pill-g">✔ Reportes en días, no meses</div>
+      <div class="pill pill-b">✔ Evidencia auditable por eslabón</div>
+      <div class="pill pill-am">✔ GRI · CSRD · GHG Protocol</div>
+      <div class="pill pill-cy">✔ Human-in-the-loop garantizado</div>
+    </div>
+  </div>
+
+  <!-- FLUJO -->
+  <div class="band anim anim-3">
+    <span style="font-size:16px">⟳</span>
+    <span class="band-text">Flujo de un proyecto ESG</span>
+  </div>
+  <div class="section anim anim-3">
+    <div class="flow-grid">
+      <div class="flow-card" style="background:var(--gl)">
+        <div class="flow-num" style="color:var(--g)">①</div>
+        <div class="flow-title">Ingesta de datos</div>
+        <div class="flow-desc">La empresa provee datos E, S y G en cualquier formato: planillas, PDFs, reportes internos.</div>
+      </div>
+      <div class="flow-card" style="background:var(--bll)">
+        <div class="flow-num" style="color:var(--bl)">②</div>
+        <div class="flow-title">Agentes IA analizan</div>
+        <div class="flow-desc">Cada agente procesa su dimensión y la contrasta con GRI, GHG Protocol y CSRD.</div>
+      </div>
+      <div class="flow-card" style="background:var(--al)">
+        <div class="flow-num" style="color:var(--am)">③</div>
+        <div class="flow-title">Validación humana</div>
+        <div class="flow-desc">El consultor aprueba cada entregable. Sin validación, el sistema no avanza.</div>
+      </div>
+      <div class="flow-card" style="background:var(--cyl)">
+        <div class="flow-num" style="color:var(--cy)">④</div>
+        <div class="flow-title">Reporte final</div>
+        <div class="flow-desc">Scorecard ESG, mapa de brechas, plan de acción y trazabilidad completa.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENTES -->
+  <div class="band anim anim-4">
+    <span style="font-size:16px">🤖</span>
+    <span class="band-text">Los 5 agentes especializados</span>
+  </div>
+  <div class="section anim anim-4">
+    <div class="agent-list">
+      <div class="agent-card" style="background:var(--gl)">
+        <div class="agent-emoji">🌿</div>
+        <div>
+          <div class="agent-name" style="color:var(--g)">Ebisu</div>
+          <div class="agent-role" style="color:var(--g)">Environmental Lead</div>
+          <div class="agent-desc">Auditoría GHG Scope 1, 2 y 3. Riesgo climático, eficiencia energética y estrategia de descarbonización.</div>
+        </div>
+      </div>
+      <div class="agent-card" style="background:var(--pkl)">
+        <div class="agent-emoji">🤝</div>
+        <div>
+          <div class="agent-name" style="color:var(--pk)">Soli</div>
+          <div class="agent-role" style="color:var(--pk)">Social Impact</div>
+          <div class="agent-desc">DEI, derechos laborales, cadena de suministro ética e impacto comunitario.</div>
+        </div>
+      </div>
+      <div class="agent-card" style="background:var(--al)">
+        <div class="agent-emoji">⚖️</div>
+        <div>
+          <div class="agent-name" style="color:var(--am)">Gov</div>
+          <div class="agent-role" style="color:var(--am)">Governance Expert</div>
+          <div class="agent-desc">Directorio, remuneración ejecutiva, anticorrupción y transparencia de reporte.</div>
+        </div>
+      </div>
+      <div class="agent-card" style="background:var(--bll)">
+        <div class="agent-emoji">📋</div>
+        <div>
+          <div class="agent-name" style="color:var(--bl)">Regi</div>
+          <div class="agent-role" style="color:var(--bl)">Regulatory Strategist</div>
+          <div class="agent-desc">Doble materialidad, mapeo CSRD/SEC, marcos GRI, SASB y TCFD.</div>
+        </div>
+      </div>
+      <div class="agent-card" style="background:var(--cyl)">
+        <div class="agent-emoji">⚙️</div>
+        <div>
+          <div class="agent-name" style="color:var(--cy)">Jaguarete</div>
+          <div class="agent-role" style="color:var(--cy)">ESG App Builder</div>
+          <div class="agent-desc">Consolida todos los outputs y genera dashboards, reportes PDF y documentación final.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR QUÉ NODO8 -->
+  <div class="band anim anim-5">
+    <span style="font-size:16px">⚡</span>
+    <span class="band-text">¿Por qué Nodo8?</span>
+  </div>
+  <div class="section anim anim-5">
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">🎯</div>
+        <div class="diff-title">Especialización real</div>
+        <div class="diff-desc">Cada agente tiene scope, inputs y outputs definidos. El sistema no improvisa: sigue procedimientos auditables.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔗</div>
+        <div class="diff-title">Integración con su flujo actual</div>
+        <div class="diff-desc">No requiere cambiar sistemas. El relevamiento parte de los formatos que ya usa la empresa.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">📊</div>
+        <div class="diff-title">Resultados ejecutivos</div>
+        <div class="diff-desc">Diseñado para directorios: scorecards visuales, mapas de riesgo y planes de acción claros.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚡</div>
+        <div class="diff-title">Velocidad sin perder rigor</div>
+        <div class="diff-desc">Diagnóstico completo en días, no semanas. La IA procesa; el consultor valida y firma.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <div class="band anim anim-6">
+    <span style="font-size:16px">🏛</span>
+    <span class="band-text">Pilares del sistema</span>
+  </div>
+  <div class="section anim anim-6">
+    <div class="pillar-list">
+      <div class="pillar-card" style="background:var(--al)">
+        <div class="pillar-title" style="color:var(--am)">🔁 Human-in-the-loop</div>
+        <div class="pillar-desc">El consultor valida y aprueba cada entregable antes de que el sistema avance. Ningún reporte se genera sin revisión humana explícita en cada eslabón del proceso.</div>
+      </div>
+      <div class="pillar-card" style="background:var(--bll)">
+        <div class="pillar-title" style="color:var(--bl)">🔒 Trazabilidad total</div>
+        <div class="pillar-desc">Cada dato, cálculo y decisión queda registrado con su fuente, autor y timestamp. Auditable por equipos internos, auditores externos o reguladores en cualquier momento.</div>
+      </div>
+      <div class="pillar-card" style="background:var(--gl)">
+        <div class="pillar-title" style="color:var(--g)">📐 Estándares internacionales</div>
+        <div class="pillar-desc">GRI, GHG Protocol (Scope 1/2/3), CSRD, TCFD y SASB. El sistema selecciona el marco aplicable según la industria y región de operación, sin configuración manual.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer anim anim-7">
+    <div class="footer-email">consultas@nodo8.ai</div>
+    <div class="footer-text">nodo8.ai · Argentina 2025</div>
+  </div>
+
+</body>
+</html>
